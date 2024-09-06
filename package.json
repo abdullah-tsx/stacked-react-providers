@@ -38,5 +38,18 @@
 		"prettier": "^3.3.3",
 		"typescript": "^4.0.0",
 		"typescript-eslint": "^8.4.0"
-	}
+	},
+	"keywords": [
+    "react",
+		"next",
+		"react-native",
+    "context",
+    "providers",
+    "react-provider",
+    "react-context",
+    "combine-providers",
+    "react-state-management",
+		"clean code"
+  ]
+	
 }
