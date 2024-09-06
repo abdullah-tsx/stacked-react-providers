@@ -1,0 +1,23 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+
+# Lockfiles
+yarn.lock
+package-lock.json
+
+# Logs
+logs
+*.log
+
+# ESLint cache
+.eslintcache
+
+# IDE files
+.vscode/
+.idea/
+
+# Mac OS files
+.DS_Store

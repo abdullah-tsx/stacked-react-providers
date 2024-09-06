@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"target": "ES5",
+		"module": "ESNext",
+		"declaration": true, // Generate .d.ts declaration files
+		"outDir": "./dist", // Output compiled code to dist
+		"jsx": "react",
+		"moduleResolution": "node",
+		"strict": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true
+	},
+	"include": ["src/**/*"]
+}
