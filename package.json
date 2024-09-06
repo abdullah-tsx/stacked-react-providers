@@ -16,19 +16,23 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/abdullah-tsx/combine-providers.git"
+		"url": "https://github.com/abdullah-tsx/stacked-react-providers.git"
 	},
-	"homepage": "https://github.com/abdullah-tsx/combine-providers#readme",
+	"homepage": "https://github.com/abdullah-tsx/stacked-react-providers#readme",
 	"bugs": {
-		"url": "https://github.com/abdullah-tsx/combine-providers/issues"
+		"url": "https://github.com/abdullah-tsx/stacked-react-providers/issues"
 	},
 	"peerDependencies": {
 		"react": "^17.0.0 || ^18.0.0"
 	},
 	"devDependencies": {
+		"@eslint/eslintrc": "^3.1.0",
 		"@eslint/js": "^9.9.1",
 		"@types/react": "^17.0.0 || ^18.0.0",
+		"@typescript-eslint/eslint-plugin": "^8.4.0",
 		"eslint": "^9.9.1",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-prettier": "^5.2.1",
 		"eslint-plugin-react": "^7.35.2",
 		"globals": "^15.9.0",
 		"prettier": "^3.3.3",

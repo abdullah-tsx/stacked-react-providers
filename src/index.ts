@@ -1,1 +1,1 @@
-export { combineProviders } from './CombineProviders';
+export { stackProviders } from './StackProviders';

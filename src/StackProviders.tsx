@@ -11,7 +11,7 @@ interface Provider<P = {}, C = {}> {
 	childrenWithProps?: ChildWithProps[];
 }
 
-export const combineProviders = (providers: Provider<any, any>[]) => {
+export const stackProviders = (providers: Provider<any, any>[]) => {
 	return ({ children }: { children: ReactNode }) => {
 		return providers.reduceRight(
 			(acc, { provider: ProviderComponent, props, childrenWithProps }) => {

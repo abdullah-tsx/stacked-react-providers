@@ -1,6 +1,6 @@
-# combine-providers
+# stacked-react-providers
 
-`combine-providers` is a utility that allows you to combine multiple React providers in a clean and efficient way, with support for rendering child components with specific props.
+`stacked-react-providers` is a utility that allows you to combine multiple React providers in a clean and efficient way, with support for rendering child components with specific props.
 
 ## Features
 
@@ -10,27 +10,27 @@
 
 ## Installation
 
-You can install `combine-providers` via npm or yarn:
+You can install `stacked-react-providers` via npm or yarn:
 
 ### NPM
 
 ```bash
-npm install combine-providers
+npm install stacked-react-providers
 ```
 
 ### Yarn
 
 ```bash
-yarn add combine-providers
+yarn add stacked-react-providers
 ```
 
 ## Usage
 
-Here’s an example of how to use `combine-providers` to combine multiple React providers into a single component:
+Here’s an example of how to use `stacked-react-providers` to combine multiple React providers into a single component:
 
 ```tsx
 import React from 'react';
-import { combineProviders } from 'combine-providers';
+import { combineProviders } from 'stacked-react-providers';
 import { TooltipProvider } from './TooltipProvider';
 import { ReactQueryProvider } from '@tanstack/react-query';
 import { StoreProvider } from './StoreProvider';
