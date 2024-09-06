@@ -1,5 +1,5 @@
 {
-	"name": "combine-providers",
+	"name": "stacked-react-providers",
 	"version": "1.0.0",
 	"description": "A utility to combine React providers with support for children components and props.",
 	"main": "dist/index.js",
