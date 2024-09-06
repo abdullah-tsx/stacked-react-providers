@@ -30,7 +30,7 @@ Here’s an example of how to use `stacked-react-providers` to combine multiple 
 
 ```tsx
 import React from 'react';
-import { combineProviders } from 'stacked-react-providers';
+import { stackProviders } from 'stacked-react-providers';
 import { TooltipProvider } from './TooltipProvider';
 import { ReactQueryProvider } from '@tanstack/react-query';
 import { StoreProvider } from './StoreProvider';
@@ -55,7 +55,7 @@ const AnotherChildComponent: React.FC = () => {
 const queryClient = new QueryClient();
 
 // Combining multiple providers
-const CombinedProviders = combineProviders([
+const StackedProviders = stackProviders([
 	{
 		provider: TooltipProvider,
 		props: { delayDuration: 200 },
@@ -74,11 +74,11 @@ function App({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en" className="poppins-className">
 			<body>
-				<CombinedProviders>
+				<StackedProviders>
 					{children} {/* Children passed to the SocketProvider */}
 					<ToastWrapper />{' '}
 					{/* ToastWrapper remains outside of SocketProvider */}
-				</CombinedProviders>
+				</StackedProviders>
 			</body>
 		</html>
 	);
@@ -89,7 +89,7 @@ export default App;
 
 ## API
 
-### `combineProviders(providers: Provider[])`
+### `stackProviders(providers: Provider[])`
 
 Combines multiple providers and returns a single component that wraps its children in the specified providers. Supports passing props to providers and rendering children inside providers.
 
@@ -103,7 +103,7 @@ Combines multiple providers and returns a single component that wraps its childr
 #### Example:
 
 ```tsx
-const CombinedProviders = combineProviders([
+const StackedProviders = stackProviders([
 	{ provider: SomeProvider, props: { someProp: 'value' } },
 	{
 		provider: AnotherProvider,
