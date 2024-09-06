@@ -1,119 +1,118 @@
-# stacked-react-providers
 
-`stacked-react-providers` is a utility that allows you to combine multiple React providers in a clean and efficient way, with support for rendering child components with specific props.
+# Stacked React Providers
+
+A lightweight utility to combine and stack multiple React context providers into a single component for better state management and clean application architecture.
 
 ## Features
-
-- Combine multiple React providers into a single component.
-- Support for rendering multiple child components inside providers, with individual props for each child.
-- Easy to integrate with both custom and third-party providers.
+- Combine multiple React providers into one.
+- Supports both custom and third-party providers.
+- Keeps your component tree clean and organized.
 
 ## Installation
 
-You can install `stacked-react-providers` via npm or yarn:
-
-### NPM
+Install via npm:
 
 ```bash
 npm install stacked-react-providers
 ```
 
-### Yarn
+Or via Yarn:
 
 ```bash
 yarn add stacked-react-providers
 ```
 
-## Usage
+## Before using this package
 
-Here’s an example of how to use `stacked-react-providers` to combine multiple React providers into a single component:
+If you're dealing with multiple providers in your React app, you might be wrapping components deeply inside each provider. Your component tree could look like this:
+
+```tsx
+function App() {
+  return (
+    <AuthProvider>
+      <ThemeProvider>
+        <QueryClientProvider>
+          <YourComponent />
+        </QueryClientProvider>
+      </ThemeProvider>
+    </AuthProvider>
+  );
+}
+```
+
+While this works, it becomes harder to maintain and adds unnecessary nesting.
+
+## Basic Usage
+
+Here’s a simple example demonstrating how to use the `stacked-react-providers` package to combine multiple providers.
 
 ```tsx
 import React from 'react';
-import { stackProviders } from 'stacked-react-providers';
-import { TooltipProvider } from './TooltipProvider';
-import { ReactQueryProvider } from '@tanstack/react-query';
-import { StoreProvider } from './StoreProvider';
-import { SocketProvider } from './SocketProvider';
-import { ToastWrapper } from './ToastWrapper';
+import { combineProviders } from 'stacked-react-providers';
+import { AuthProvider } from './providers/AuthProvider';
+import { ThemeProvider } from './providers/ThemeProvider';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from './queryClient';
 
-// Example child component
-interface ToasterProps {
-	position: string;
-}
-
-const ToasterContainer: React.FC<ToasterProps> = ({ position }) => {
-	return <div>Toaster Position: {position}</div>;
-};
-
-// Another example child component
-const AnotherChildComponent: React.FC = () => {
-	return <div>Another child inside a provider</div>;
-};
-
-// Third-party QueryClientProvider (from Tanstack Query)
-const queryClient = new QueryClient();
-
-// Combining multiple providers
-const StackedProviders = stackProviders([
-	{
-		provider: TooltipProvider,
-		props: { delayDuration: 200 },
-		childrenWithProps: [
-			{ Child: ToasterContainer, childProps: { position: 'bottom-right' } },
-			{ Child: AnotherChildComponent }, // No props for this child
-		],
-	},
-	{ provider: ReactQueryProvider },
-	{ provider: StoreProvider },
-	{ provider: SocketProvider },
-	{ provider: QueryClientProvider, props: { client: queryClient } }, // Third-party provider
+// Combine your providers into one
+const CombinedProviders = combineProviders([
+  { provider: AuthProvider, props: { authToken: 'my-auth-token' } },
+  { provider: ThemeProvider, props: { theme: 'dark' } },
+  { provider: QueryClientProvider, props: { client: queryClient } }
 ]);
 
-function App({ children }: { children: React.ReactNode }) {
-	return (
-		<html lang="en" className="poppins-className">
-			<body>
-				<StackedProviders>
-					{children} {/* Children passed to the SocketProvider */}
-					<ToastWrapper />{' '}
-					{/* ToastWrapper remains outside of SocketProvider */}
-				</StackedProviders>
-			</body>
-		</html>
-	);
+function App() {
+  return (
+    <CombinedProviders>
+      <YourComponent />
+    </CombinedProviders>
+  );
 }
 
 export default App;
 ```
 
-## API
+## After using this package
 
-### `stackProviders(providers: Provider[])`
+With `stacked-react-providers`, your app becomes much cleaner and easier to maintain:
 
-Combines multiple providers and returns a single component that wraps its children in the specified providers. Supports passing props to providers and rendering children inside providers.
+```tsx
+function App() {
+  return (
+    <CombinedProviders>
+      <YourComponent />
+    </CombinedProviders>
+  );
+}
+```
 
-#### Parameters
+### API
 
-- `providers`: An array of provider objects. Each object can include:
-  - `provider`: The React provider component.
-  - `props` (optional): Props for the provider component.
-  - `childrenWithProps` (optional): An array of child components to be rendered inside the provider, along with their respective props.
+#### `combineProviders(providers: Provider[])`
+
+This function accepts an array of provider objects and returns a single component that combines them.
+
+- **Parameters**:
+  - `providers`: An array of provider objects, where each object can include:
+    - `provider`: The React provider component.
+    - `props`: (Optional) Props for the provider component.
+
+- **Returns**:
+  - A React component that combines the provided providers.
 
 #### Example:
 
 ```tsx
-const StackedProviders = stackProviders([
-	{ provider: SomeProvider, props: { someProp: 'value' } },
-	{
-		provider: AnotherProvider,
-		childrenWithProps: [
-			{ Child: SomeComponent, childProps: { someChildProp: 'value' } },
-		],
-	},
+const CombinedProviders = combineProviders([
+  { provider: SomeProvider, props: { someProp: 'value' } },
+  { provider: AnotherProvider }
 ]);
 ```
 
 ## License
 
 This package is open-source and available under the [MIT License](LICENSE).
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a pull request or open an issue if you find any bugs or have suggestions for improvement.
