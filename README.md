@@ -1,3 +1,4 @@
+
 # Stacked React Providers
 
 A lightweight utility to combine and stack multiple React context providers into a single component for better state management and clean application architecture.
@@ -28,16 +29,16 @@ If you're dealing with multiple providers in your React app, you might be wrappi
 
 ```tsx
 function App() {
-	return (
-		<AuthProvider>
-			<ThemeProvider>
-				<QueryClientProvider>
-					<YourComponent />
-					<ReactQueryDevtools initialIsOpen={false} />
-				</QueryClientProvider>
-			</ThemeProvider>
-		</AuthProvider>
-	);
+  return (
+    <AuthProvider>
+      <ThemeProvider>
+        <QueryClientProvider>
+          <YourComponent />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
+      </ThemeProvider>
+    </AuthProvider>
+  );
 }
 ```
 
@@ -58,23 +59,23 @@ import { queryClient } from './queryClient';
 
 // Combine your providers into one
 const StackedProviders = stackProviders([
-	{ provider: AuthProvider, props: { authToken: 'my-auth-token' } },
-	{ provider: ThemeProvider, props: { theme: 'dark' } },
-	{
-		provider: QueryClientProvider,
-		props: { client: queryClient },
-		childrenWithProps: [
-			{ Child: ReactQueryDevtools, childProps: { initialIsOpen: false } },
-		],
-	},
+  { provider: AuthProvider, props: { authToken: 'my-auth-token' } },
+  { provider: ThemeProvider, props: { theme: 'dark' } },
+  {
+    provider: QueryClientProvider,
+    props: { client: queryClient },
+    childrenWithProps: [
+      { Child: ReactQueryDevtools, childProps: { initialIsOpen: false } },
+    ],
+  },
 ]);
 
 function App() {
-	return (
-		<StackedProviders>
-			<YourComponent />
-		</StackedProviders>
-	);
+  return (
+    <StackedProviders>
+      <YourComponent />
+    </StackedProviders>
+  );
 }
 
 export default App;
@@ -86,11 +87,11 @@ With `stacked-react-providers`, your app becomes much cleaner and easier to main
 
 ```tsx
 function App() {
-	return (
-		<StackedProviders>
-			<YourComponent />
-		</StackedProviders>
-	);
+  return (
+    <StackedProviders>
+      <YourComponent />
+    </StackedProviders>
+  );
 }
 ```
 
@@ -105,6 +106,9 @@ This function accepts an array of provider objects and returns a single componen
   - `providers`: An array of provider objects, where each object can include:
     - `provider`: The React provider component.
     - `props`: (Optional) Props for the provider component.
+    - `childrenWithProps`: (Optional) An array of child components that need to be rendered in current provider.
+    -- `Child`: The Child Component.
+    -- `childProps`: (Optional) the props for child component.
 
 - **Returns**:
   - A React component that combines the provided providers.
@@ -113,8 +117,8 @@ This function accepts an array of provider objects and returns a single componen
 
 ```tsx
 const StackedProviders = stackProviders([
-	{ provider: SomeProvider, props: { someProp: 'value' } },
-	{ provider: AnotherProvider },
+  { provider: SomeProvider, props: { someProp: 'value' } },
+  { provider: AnotherProvider, childrenWithProps: [{Child: SomeComponent, childProps:{someProp: 'value'}}] },
 ]);
 ```
 
