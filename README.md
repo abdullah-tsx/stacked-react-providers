@@ -1,7 +1,7 @@
 
 # Stacked React Providers
 
-A lightweight utility to combine and stack multiple React context providers into a single component for better state management and clean application architecture.
+A lightweight utility to combine and stack multiple React context providers into a single component for better and clean application architecture.
 
 ![Stacked React Providers Demo](https://i.imgur.com/xKXtsK8.gif)
 
