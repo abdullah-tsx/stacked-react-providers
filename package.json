@@ -1,6 +1,6 @@
 {
 	"name": "stacked-react-providers",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A utility to combine React providers with support for children components and props.",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -51,5 +51,5 @@
     "react-state-management",
 		"clean code"
   ]
-	
+
 }
